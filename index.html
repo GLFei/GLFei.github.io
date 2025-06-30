@@ -91,6 +91,9 @@
             --el-border-color-hover: var(--el-text-color-disabled);
             --el-border: var(--el-border-width) var(--el-border-style) var(--el-border-color);
             --el-svg-monochrome-grey: var(--el-border-color);
+
+            --el-font-size-base: 20px;
+            --el-border-radius-base: 4px;
         }
 
         html,
@@ -203,14 +206,45 @@
         #links-container {
             display: flex;
         }
+
         #links-container button {
             margin: 0 5px;
             width: 80px;
-            font-size: 24px;
-            border-radius: 4px;
         }
+
         #content {
             word-break: break-all;
+        }
+
+        .self-dom {
+            margin: 0 5px;
+            width: 80px;
+            font-size: 24px;
+        }
+
+        .self-button {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            line-height: 1;
+            height: 32px;
+            white-space: nowrap;
+            cursor: pointer;
+            color: var(--el-button-text-color);
+            text-align: center;
+            box-sizing: border-box;
+            outline: none;
+            transition: .1s;
+            font-weight: var(--el-button-font-weight);
+            user-select: none;
+            vertical-align: middle;
+            -webkit-appearance: none;
+            background-color: var(--el-button-bg-color);
+            border: var(--el-border);
+            border-color: var(--el-button-border-color);
+            padding: 8px 15px;
+            font-size: var(--el-font-size-base);
+            border-radius: var(--el-border-radius-base);
         }
     </style>
 </head>
@@ -221,7 +255,8 @@
             <li><button class="cs-button" data-number="1">1</button></li>
             <li><button class="cs-button" data-number="10">10</button></li>
             <li><button class="cs-button" data-number="500">500</button></li>
-            <div id="result"></div>
+            <div class='self-dom' id="result">0</div>
+            <div class='cs-button self-dom self-button' id="clear">清除</div>
         </ul>
         <div id="content"></div>
     </div>
@@ -289,6 +324,13 @@
             count += Number(data);
             result.innerText = count;
         }
+    })
+
+    const clear = document.getElementById("clear");
+    clear.addEventListener('click', function (ev) {
+        count = 0;
+        result.innerText = count;
+        content.innerHTML = '';
     })
 </script>
 
