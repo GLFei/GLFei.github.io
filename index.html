@@ -1,12 +1,295 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to nginx!</title>
+    <style>
+        :root {
+            color-scheme: light;
+            --el-color-white: #ffffff;
+            --el-color-black: #000000;
+            --el-color-primary: #409eff;
+            --el-color-primary-light-3: #79bbff;
+            --el-color-primary-light-5: #a0cfff;
+            --el-color-primary-light-7: #c6e2ff;
+            --el-color-primary-light-8: #d9ecff;
+            --el-color-primary-light-9: #ecf5ff;
+            --el-color-primary-dark-2: #337ecc;
+            --el-color-success: #67c23a;
+            --el-color-success-light-3: #95d475;
+            --el-color-success-light-5: #b3e19d;
+            --el-color-success-light-7: #d1edc4;
+            --el-color-success-light-8: #e1f3d8;
+            --el-color-success-light-9: #f0f9eb;
+            --el-color-success-dark-2: #529b2e;
+            --el-color-warning: #e6a23c;
+            --el-color-warning-light-3: #eebe77;
+            --el-color-warning-light-5: #f3d19e;
+            --el-color-warning-light-7: #f8e3c5;
+            --el-color-warning-light-8: #faecd8;
+            --el-color-warning-light-9: #fdf6ec;
+            --el-color-warning-dark-2: #b88230;
+            --el-color-danger: #f56c6c;
+            --el-color-danger-light-3: #f89898;
+            --el-color-danger-light-5: #fab6b6;
+            --el-color-danger-light-7: #fcd3d3;
+            --el-color-danger-light-8: #fde2e2;
+            --el-color-danger-light-9: #fef0f0;
+            --el-color-danger-dark-2: #c45656;
+            --el-color-error: #f56c6c;
+            --el-color-error-light-3: #f89898;
+            --el-color-error-light-5: #fab6b6;
+            --el-color-error-light-7: #fcd3d3;
+            --el-color-error-light-8: #fde2e2;
+            --el-color-error-light-9: #fef0f0;
+            --el-color-error-dark-2: #c45656;
+            --el-color-info: #909399;
+            --el-color-info-light-3: #b1b3b8;
+            --el-color-info-light-5: #c8c9cc;
+            --el-color-info-light-7: #dedfe0;
+            --el-color-info-light-8: #e9e9eb;
+            --el-color-info-light-9: #f4f4f5;
+            --el-color-info-dark-2: #73767a;
+            --el-bg-color: #ffffff;
+            --el-bg-color-page: #f2f3f5;
+            --el-bg-color-overlay: #ffffff;
+            --el-text-color-primary: #303133;
+            --el-text-color-regular: #606266;
+            --el-text-color-secondary: #909399;
+            --el-text-color-placeholder: #a8abb2;
+            --el-text-color-disabled: #c0c4cc;
+            --el-border-color: #dcdfe6;
+            --el-border-color-light: #e4e7ed;
+            --el-border-color-lighter: #ebeef5;
+            --el-border-color-extra-light: #f2f6fc;
+            --el-border-color-dark: #d4d7de;
+            --el-border-color-darker: #cdd0d6;
+            --el-fill-color: #f0f2f5;
+            --el-fill-color-light: #f5f7fa;
+            --el-fill-color-lighter: #fafafa;
+            --el-fill-color-extra-light: #fafcff;
+            --el-fill-color-dark: #ebedf0;
+            --el-fill-color-darker: #e6e8eb;
+            --el-fill-color-blank: #ffffff;
+            --el-box-shadow: 0px 12px 32px 4px rgba(0, 0, 0, .04), 0px 8px 20px rgba(0, 0, 0, .08);
+            --el-box-shadow-light: 0px 0px 12px rgba(0, 0, 0, .12);
+            --el-box-shadow-lighter: 0px 0px 6px rgba(0, 0, 0, .12);
+            --el-box-shadow-dark: 0px 16px 48px 16px rgba(0, 0, 0, .08), 0px 12px 32px rgba(0, 0, 0, .12), 0px 8px 16px -8px rgba(0, 0, 0, .16);
+            --el-disabled-bg-color: var(--el-fill-color-light);
+            --el-disabled-text-color: var(--el-text-color-placeholder);
+            --el-disabled-border-color: var(--el-border-color-light);
+            --el-overlay-color: rgba(0, 0, 0, .8);
+            --el-overlay-color-light: rgba(0, 0, 0, .7);
+            --el-overlay-color-lighter: rgba(0, 0, 0, .5);
+            --el-mask-color: rgba(255, 255, 255, .9);
+            --el-mask-color-extra-light: rgba(255, 255, 255, .3);
+            --el-border-width: 1px;
+            --el-border-style: solid;
+            --el-border-color-hover: var(--el-text-color-disabled);
+            --el-border: var(--el-border-width) var(--el-border-style) var(--el-border-color);
+            --el-svg-monochrome-grey: var(--el-border-color);
+        }
+
+        html,
+        body,
+        head,
+        a,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        p,
+        ul,
+        ol,
+        li {
+            padding: 0;
+            margin: 0;
+        }
+
+        ul,
+        ol,
+        li {
+            list-style: none;
+        }
+
+        .container {
+            padding: 10px;
+        }
+
+        .links {
+            cursor: pointer;
+            text-decoration: underline
+        }
+
+        .fish-container {
+            width: 100%;
+            height: 200px;
+            position: fixed;
+            z-index: -1;
+            bottom: 0;
+            left: 0;
+        }
+
+        a:link {
+            color: #409EFF;
+        }
+
+        a:visited {
+            /* color: #409EFF; */
+            box-shadow: 0px 0px 10px 1px #87c0ff;
+        }
+
+        a:hover {
+            color: #66b1ff;
+        }
+
+        a:active {
+            color: #3a8ee6;
+        }
+
+        .cs-button {
+            --el-button-text-color: var(--el-color-primary);
+            --el-button-bg-color: var(--el-color-primary-light-9);
+            --el-button-border-color: var(--el-color-primary-light-5);
+            --el-button-hover-text-color: var(--el-color-white);
+            --el-button-hover-bg-color: var(--el-color-primary);
+            --el-button-hover-border-color: var(--el-color-primary);
+            --el-button-active-text-color: var(--el-color-white);
+        }
+
+        .cs-button:hover,
+        .cs-button:focus {
+            color: var(--el-button-hover-text-color);
+            border-color: var(--el-button-hover-border-color);
+            background-color: var(--el-button-hover-bg-color);
+            outline: none;
+        }
+
+        button {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            line-height: 1;
+            height: 32px;
+            white-space: nowrap;
+            cursor: pointer;
+            color: var(--el-button-text-color);
+            text-align: center;
+            box-sizing: border-box;
+            outline: none;
+            transition: .1s;
+            font-weight: var(--el-button-font-weight);
+            user-select: none;
+            vertical-align: middle;
+            -webkit-appearance: none;
+            background-color: var(--el-button-bg-color);
+            border: var(--el-border);
+            border-color: var(--el-button-border-color);
+            padding: 8px 15px;
+            font-size: var(--el-font-size-base);
+            border-radius: var(--el-border-radius-base);
+        }
+
+        li button {
+            margin-bottom: 5px;
+        }
+
+
+        #links-container {
+            display: flex;
+        }
+        #links-container button {
+            margin: 0 5px;
+            width: 80px;
+            font-size: 24px;
+            border-radius: 4px;
+        }
+        #content {
+            word-break: break-all;
+        }
+    </style>
 </head>
+
 <body>
-  Hello
+    <div class="container">
+        <ul id="links-container">
+            <li><button class="cs-button" data-number="1">1</button></li>
+            <li><button class="cs-button" data-number="10">10</button></li>
+            <li><button class="cs-button" data-number="500">500</button></li>
+            <div id="result"></div>
+        </ul>
+        <div id="content"></div>
+    </div>
 </body>
+<script>
+    let array = [
+        { name: "祈福将", value: 0.0005 },
+        { name: "武动", value: 0.0017 },
+        { name: "限定皮", value: 0.0042 },
+        { name: "xiu", value: 0.007699999999999999 },
+        { name: "pi-jieri", value: 0.0097 },
+        { name: "pi-pinzhi", value: 0.0122 },
+        { name: "pi", value: 0.36219999999999997 },
+        { name: "jiang-putong", value: 0.46219999999999994 },
+        { name: "qita", value: 0.782 },
+        { name: "jie", value: 1 }
+    ]
+    // 单抽/多抽 默认10连
+    function chou(times = 10) {
+        const res = []
+        for (let i = 0; i < times; i++) {
+            const random = Math.random()
+            for (let j = 0; j < array.length; j++) {
+                if (random <= array[j].value) {
+                    res.push(array[j].name)
+                    break
+                }
+            }
+        }
+        return res
+    }
+
+    // 10连次数 默认50次
+    function chouTotal(n = 50) {
+        const list = [];
+        for (let i = 0; i < n; i++) {
+            list.push(chou())
+        }
+        return list;
+    }
+
+    const linksCon = document.getElementById("links-container");
+    const content = document.getElementById("content");
+    const result = document.getElementById("result");
+
+    let count = 0;
+    linksCon.addEventListener('click', function (ev) {
+        var ev = ev || window.event;
+        var target = ev.target || ev.srcElement;
+        if (target.nodeName.toLowerCase() == 'button') {
+            const data = target.getAttribute('data-number');
+            console.log(data);
+            let res = [];
+            if (data == 10) {
+                res = chou()
+            } else if (data == 500) {
+                res = chouTotal()
+            } else {
+                res = chou(1);
+            }
+
+            console.log(res);
+
+            content.innerText = res.toString();
+            count += Number(data);
+            result.innerText = count;
+        }
+    })
+</script>
+
 </html>
