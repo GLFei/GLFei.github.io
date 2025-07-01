@@ -163,7 +163,6 @@
             --el-button-hover-bg-color: var(--el-color-primary);
             --el-button-hover-border-color: var(--el-color-primary);
             --el-button-active-text-color: var(--el-color-white);
-            user-select: none;
         }
 
         .cs-button:hover,
@@ -247,6 +246,15 @@
             font-size: var(--el-font-size-base);
             border-radius: var(--el-border-radius-base);
         }
+
+        .span-block {
+            margin: 2px 3px;
+            display: inline-block;
+            border: 1px solid #00000033;
+        }
+        .span-cell {
+            padding: 0px 5px
+        }
     </style>
 </head>
 
@@ -264,9 +272,9 @@
 </body>
 <script>
     let array = [
-        { name: "祈福将", value: 0.0005 },
-        { name: "武动", value: 0.0017 },
-        { name: "限定皮", value: 0.0042 },
+        { name: "祈福将", color: 'red', value: 0.0005 },
+        { name: "武动", color: 'green', value: 0.0017 },
+        { name: "限定皮", color: 'blue', value: 0.0042 },
         { name: "xiu", value: 0.007699999999999999 },
         { name: "pi-jieri", value: 0.0097 },
         { name: "pi-pinzhi", value: 0.0122 },
@@ -277,12 +285,18 @@
     ]
     // 单抽/多抽 默认10连
     function chou(times = 10) {
-        const res = []
+        const res = document.createElement('span');
+        res.className = 'span-block'
         for (let i = 0; i < times; i++) {
             const random = Math.random()
             for (let j = 0; j < array.length; j++) {
                 if (random <= array[j].value) {
-                    res.push(array[j].name)
+                    const sp = document.createElement('span');
+                    sp.innerText = array[j].name;
+                    sp.style.color = array[j].color;
+                    sp.className = 'span-cell'
+                    // res.push(array[j].name)
+                    res.appendChild(sp);
                     break
                 }
             }
@@ -292,9 +306,9 @@
 
     // 10连次数 默认50次
     function chouTotal(n = 50) {
-        const list = [];
+        const list = document.createElement('span');
         for (let i = 0; i < n; i++) {
-            list.push(chou())
+            list.appendChild(chou())
         }
         return list;
     }
@@ -309,7 +323,6 @@
         var target = ev.target || ev.srcElement;
         if (target.nodeName.toLowerCase() == 'button') {
             const data = target.getAttribute('data-number');
-            console.log(data);
             let res = [];
             if (data == 10) {
                 res = chou()
@@ -321,7 +334,7 @@
 
             console.log(res);
 
-            content.innerText = res.toString();
+            content.append(res);
             count += Number(data);
             result.innerText = count;
         }
@@ -333,6 +346,23 @@
         result.innerText = count;
         content.innerHTML = '';
     })
+
+    var timer;
+    var total = 0;
+    function start(dom) {
+        timer = setInterval(() => {
+            if (total >= 500) {
+                total = 0;
+                clearInterval(timer)
+            }
+            dom.click();
+            total++;
+        })
+    }
+    function stop() {
+        total = 0;
+        clearInterval(timer)
+    }
 </script>
 
 </html>
